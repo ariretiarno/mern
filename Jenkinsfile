@@ -66,12 +66,10 @@ spec:
         stage ('Build') {
             container('kaniko') {
                 script {
-                    if (env.BRANCH_NAME == 'staging'){
                         sh """
                         /kaniko/executor --context frontend/ --destination ariretiarno/bp-cilsy-14:frontend-${BUILD_NUMBER}
                         /kaniko/executor --context backend/ --destination ariretiarno/bp-cilsy-14:backend-${BUILD_NUMBER}
                         """
-                    }
                 }
             }
         }
